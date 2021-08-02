@@ -1,0 +1,3 @@
+hcfg==1.025
+json==99.0
+requests==2.26.0
