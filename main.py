@@ -1,7 +1,4 @@
-from curses import COLOR_GREEN
 import json
-
-from numpy import append
 from util.discord import get_discord_messages, DMessage, parse_discord_messages,delete_discord_message
 from time import sleep
 from colorama import * 
