@@ -10,4 +10,4 @@
   ```
   then run main.py via ```bash python main.py```
 
-## enjoy
+## dont forget leaving a star
