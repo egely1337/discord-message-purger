@@ -8,6 +8,6 @@
       "uid" : "enter_user_id"
   }
   ```
-  then run main.py via ```bash python main.py```
+  then run main.py via ```python main.py```
 
 ## dont forget leaving a star
