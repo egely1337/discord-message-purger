@@ -1,4 +1,4 @@
-# how-to-install
+### how-to-install
     create a file called "config.json"
     and paste this
     ```json
