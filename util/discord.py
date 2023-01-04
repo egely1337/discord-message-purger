@@ -1,4 +1,7 @@
 from requests import get,post,delete
+from datetime import datetime
+from time import mktime
+import dateutil.parser
 
 DEBUG = 1
 
@@ -14,16 +17,18 @@ class DMessage:
 
 
 discord_api = {
-    "DISCORD_GET_MESSAGES" : "https://discord.com/api/v9/channels/{}/messages?limit=50",
+    "DISCORD_GET_MESSAGES" : "https://discord.com/api/v9/channels/{}/messages?before={}&limit=50",
+    "DISCORD_GET_MESSAGES_NORMAL" : "https://discord.com/api/v9/channels/{}/messages?limit=50",
     "DISCORD_DELETE_MESSAGE" : "https://discord.com/api/v9/channels/{}/messages/{}"
 }
 
 
 
-def get_discord_messages(token,cid) -> dict:
+def get_discord_messages(token,cid, id) -> dict:
     auth = {"authorization" : token,\
     "User-Agent" : "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.188 Safari/537.36 CrKey/1.54.250320"}
-    messages = get(url=discord_api["DISCORD_GET_MESSAGES"].format(cid),headers=auth)
+    if id != 0:messages = get(url=discord_api["DISCORD_GET_MESSAGES"].format(cid,id),headers=auth)
+    elif id == 0: messages = get(url=discord_api["DISCORD_GET_MESSAGES_NORMAL"].format(cid),headers=auth)
     return messages.json()
 
 def delete_discord_message(token,cid,id) -> bool:
